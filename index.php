@@ -28,6 +28,22 @@
         </div>
         <button type="submit" class="btn btn-primary">Filtra</button>
     </form>
+
+    <!-- Tabella Bootstrap per mostrare gli hotel -->
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Città</th>
+            <th scope="col">Stelle</th>
+            <th scope="col">Parcheggio</th>
+        </tr>
+        </thead>
+        <tbody>
+        
+        
+        </tbody>
+    </table>
     </div>
   </body>
 </html>
