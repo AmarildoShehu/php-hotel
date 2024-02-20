@@ -45,4 +45,12 @@ function displayHotels($hotels) {
         echo '</tr>';
     }
 }
+
+// funzione reset
+
+if (isset($_GET['reset'])) {
+    // Se è stato premuto il pulsante di reset, ricarica la pagina senza i parametri dei filtri
+    header('Location: ' . strtok($_SERVER["REQUEST_URI"],'?'));
+    exit();
+}
 ?>

@@ -50,6 +50,7 @@
             <input type="number" id="ratingInput" name="rating" min="1" max="5" value="<?php echo isset($_GET['rating']) ? $_GET['rating'] : ''; ?>">
         </div>
         <button type="submit" class="btn btn-primary">Filtra</button>
+        <button type="submit" name="reset" class="btn btn-secondary">Reset</button>
     </form>
 
     </div>
