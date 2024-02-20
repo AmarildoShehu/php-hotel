@@ -3,17 +3,46 @@
 include 'data.php';
 
 // logica filtri
-$filteredHotels = $hotels;
 
-if (isset($_GET['parking'])) {
-    $filteredHotels = array_filter($filteredHotels, function ($hotel) {
-        return $hotel['parking'] == true;
+// filtro hotel
+function getFilteredHotels($filters, $hotels) {
+    $filteredHotels = $hotels;
+
+    // Applica i filtri
+    if (isset($filters['parking'])) {
+        $filteredHotels = filterHotelsByParking($filteredHotels);
+    }
+
+    if (isset($filters['rating'])) {
+        $filteredHotels = filterHotelsByRating($filteredHotels, $filters['rating']);
+    }
+
+    return $filteredHotels;
+}
+
+// filtro parcheggio
+function filterHotelsByParking($hotels) {
+    return array_filter($hotels, function ($hotel) {
+        return $hotel['parking'] === true;
     });
 }
 
-if (isset($_GET['rating']) && is_numeric($_GET['rating'])) {
-    $filteredHotels = array_filter($filteredHotels, function ($hotel) {
-        return $hotel['vote'] >= $_GET['rating'];
+// filtro voto
+function filterHotelsByRating($hotels, $minRating) {
+    return array_filter($hotels, function ($hotel) use ($minRating) {
+        return $hotel['vote'] >= $minRating;
     });
+}
+
+// funzione display hotel
+function displayHotels($hotels) {
+    foreach ($hotels as $hotel) {
+        echo '<tr>';
+        echo '<td>' . $hotel['name'] . '</td>';
+        echo '<td>' . $hotel['distance_to_center'] . '</td>'; // Utilizzo la distanza al centro come esempio, sostituisci con la tua logica
+        echo '<td>' . $hotel['vote'] . '</td>';
+        echo '<td>' . ($hotel['parking'] ? 'Sì' : 'No') . '</td>';
+        echo '</tr>';
+    }
 }
 ?>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,20 +14,9 @@
     />
   </head>
   <body>
-    <div class="container">
-        <!-- Aggiungi il form per il filtraggio -->
-    <form action="" method="get">
-        <div class="mb-3">
-            <label for="parkingCheckbox" class="form-label">Parcheggio</label>
-            <input type="checkbox" id="parkingCheckbox" name="parking" <?php echo isset($_GET['parking']) ? 'checked' : ''; ?>>
-        </div>
-        <div class="mb-3">
-            <label for="ratingInput" class="form-label">Voto minimo</label>
-            <input type="number" id="ratingInput" name="rating" min="1" max="5" value="<?php echo isset($_GET['rating']) ? $_GET['rating'] : ''; ?>">
-        </div>
-        <button type="submit" class="btn btn-primary">Filtra</button>
-    </form>
-
+    
+    <div class="container m-5">
+        <h1> Hotels</h1>
     <!-- Tabella Bootstrap per mostrare gli hotel -->
     <table class="table mt-4">
         <thead>
@@ -40,10 +28,30 @@
         </tr>
         </thead>
         <tbody>
-        
-        
+            <?php
+                // Include le funzioni PHP
+                include __DIR__.'/script/function.php';
+
+                // Chiamata alla funzione di filtraggio e visualizzazione
+                $filteredHotels = getFilteredHotels($_GET, $allhotels); 
+                displayHotels($filteredHotels);
+            ?>      
         </tbody>
     </table>
+
+     <!-- Aggiungi il form per il filtraggio -->
+     <form action="" method="get">
+        <div class="mb-3">
+            <label for="parkingCheckbox" class="form-label">Parcheggio</label>
+            <input type="checkbox" id="parkingCheckbox" name="parking" <?php echo isset($_GET['parking']) ? 'checked' : ''; ?>>
+        </div>
+        <div class="mb-3">
+            <label for="ratingInput" class="form-label">Voto minimo</label>
+            <input type="number" id="ratingInput" name="rating" min="1" max="5" value="<?php echo isset($_GET['rating']) ? $_GET['rating'] : ''; ?>">
+        </div>
+        <button type="submit" class="btn btn-primary">Filtra</button>
+    </form>
+
     </div>
   </body>
 </html>
