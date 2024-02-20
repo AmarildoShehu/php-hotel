@@ -15,6 +15,19 @@
     />
   </head>
   <body>
-    
+    <div class="container">
+        <!-- Aggiungi il form per il filtraggio -->
+    <form action="" method="get">
+        <div class="mb-3">
+            <label for="parkingCheckbox" class="form-label">Parcheggio</label>
+            <input type="checkbox" id="parkingCheckbox" name="parking" <?php echo isset($_GET['parking']) ? 'checked' : ''; ?>>
+        </div>
+        <div class="mb-3">
+            <label for="ratingInput" class="form-label">Voto minimo</label>
+            <input type="number" id="ratingInput" name="rating" min="1" max="5" value="<?php echo isset($_GET['rating']) ? $_GET['rating'] : ''; ?>">
+        </div>
+        <button type="submit" class="btn btn-primary">Filtra</button>
+    </form>
+    </div>
   </body>
 </html>
