@@ -29,17 +29,17 @@
         </thead>
         <tbody>
             <?php
-                // Include le funzioni PHP
+                // funzioni PHP
                 include __DIR__.'/script/function.php';
 
-                // Chiamata alla funzione di filtraggio e visualizzazione
+                
                 $filteredHotels = getFilteredHotels($_GET, $allhotels); 
                 displayHotels($filteredHotels);
             ?>      
         </tbody>
     </table>
 
-     <!-- Aggiungi il form per il filtraggio -->
+     <!-- form per il filtraggio -->
      <form action="" method="get">
         <div class="mb-3">
             <label for="parkingCheckbox" class="form-label">Parcheggio</label>
